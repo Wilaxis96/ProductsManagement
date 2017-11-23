@@ -1,0 +1,73 @@
+<div class="container-fluid">
+  <div class="page-header  text-center">
+    <h1>Update Product</h1>
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-md-offset-3">
+      <form role="form" (ngSubmit)="onSubmit()" #productForm="ngForm">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="product-name">Product Name</label>
+              <input class="form-control" type="text" placeholder="Product Name" id="product-name" [(ngModel)]="Product.ProductName" name="product-name"
+                #productName="ngModel" required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="product-description">Product Description</label>
+              <input class="form-control" type="text" placeholder="Product Description" id="product-description" [(ngModel)]="Product.ProductDescription"
+                name="product-description" #productDescription="ngModel" required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="price">Price</label>
+              <input class="form-control" type="text" placeholder="Price" id="price" [textMask]="{mask: numberMask}" [(ngModel)]="Product.Price"
+                name="price" #price="ngModel" required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="stock">Stock</label>
+              <input class="form-control" type="text" placeholder="Stock" (keypress)="isNumber(event)" id="stock" [(ngModel)]="Product.Stock"
+                name="stock" #stock="ngModel" required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="category">Category</label>
+              <select class="form-control" id="category" [(ngModel)]="Product.CategoryID" name="category" #category="ngModel" required>
+                <option *ngFor="let Category of listCategories" [ngValue]="Category.Id">{{Category.CategoryName}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="status">Status</label>
+              <select class="form-control" id="status" [(ngModel)]="Product.Status" name="status" #status="ngModel" required>
+                <option value="true" selected>Active</option>
+                <option value="false">Inactive</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6" align="center">
+            <button type="submit" class="btn btn-primary" [disabled]="!productForm.form.valid">Update</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
